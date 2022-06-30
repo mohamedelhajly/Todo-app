@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+
+//import logo from './logo.svg';
 import './App.css';
+import React , {Component} from 'react'
+//import UserRegister from './comp/API/main';
+import NewUser from './comp/Newuser';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Route , Routes , NavLink ,  BrowserRouter as Router} from 'react-router-dom'
+import Loginuser from './comp/Loginuser';
+import NotFound from './comp/NotFound';
+import Todo from './comp/Todo';
 
-function App() {
+export default class app extends Component {
+render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Router>
+      <nav className='appp'>
+            <NavLink to="/Login">Login here</NavLink>
+            <NavLink to="">---------</NavLink>
+            <NavLink to="/">Registre</NavLink>
+      </nav>
+      <Routes>
+        <Route exact path="/" element={<NewUser/>} />
+        <Route exact path="/Login" element={<Loginuser/>} />
+        <Route exact path="*" element={<NotFound/>}/>
+        <Route exact path="/Todo" element={<Todo/>} />
+          </Routes>
 
-export default App;
+    </Router>
+    )
+}
+}
